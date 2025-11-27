@@ -19,14 +19,23 @@ function inputKeys(evt) {
   }
 }
 
-function addMessage(text, className) {
+// const messageData = {
+//   text: "Привет!",
+//   type: "their-message",
+//   date: "2023-10-27T10:00:00.000Z", // Время в формате ISO
+// };
+
+function addMessage(messageData) {
+  const text = messageData.text;
+  const className = messageData.type;
+  const date = new Date(messageData.date);
+
   // Message
   const newMessage = document.createElement("div");
   newMessage.textContent = text;
   newMessage.classList.add("message", className);
 
   // Message Time
-  const date = new Date();
   const hours = String(date.getHours()).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
   const formattedTime = `${hours}:${minutes}`;
@@ -45,7 +54,14 @@ function sendMessage() {
   if (message === "") {
     return;
   }
-  addMessage(message, "my-message");
+
+  const data = {
+    text: input.value,
+    type: "my-message",
+    date: new Date(),
+  };
+
+  addMessage(data);
 
   input.value = "";
   input.focus();
@@ -59,18 +75,26 @@ function sendMessage() {
 
 function botResponse(userText) {
   const text = userText.toLowerCase();
+  let botText = "";
 
   if (text.includes("привет")) {
-    addMessage("Приветствую тебя, человек!", "their-message");
+    botText = "Приветствую тебя, человек!";
   } else if (text.includes("время")) {
-    addMessage("Сейчас " + new Date().toLocaleTimeString(), "their-message");
+    botText = "Сейчас " + new Date().toLocaleTimeString();
   } else if (text === "пока") {
-    addMessage("До свидания!", "their-message");
+    botText = "До свидания!";
   } else {
     const answers = ["Привет!", "Как дела?", "Я просто бот", "Отстань"];
-    const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
-    addMessage(randomAnswer, "their-message");
+    botText = answers[Math.floor(Math.random() * answers.length)];
   }
+
+  const botData = {
+    text: botText,
+    type: "their-message",
+    date: new Date()
+  }
+
+  addMessage(botData)
 }
 
 function showTyping() {
