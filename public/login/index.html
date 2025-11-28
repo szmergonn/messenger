@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login/login.css" />
+    <script src="login/login.js" defer></script>
+    <title>Mini chat</title>
+  </head>
+  <body>
+    <div class="auth-wrapper">
+      <!-- Форма входа -->
+      <div id="login-form" class="card">
+        <div class="card-header">
+          <h2>Вход</h2>
+          <p>Рады видеть тебя снова</p>
+        </div>
+
+        <form>
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input id="login-email" type="email" placeholder="you@mail.com" required />
+          </div>
+
+          <div class="field">
+            <label for="login-password">Пароль</label>
+            <input id="login-password" type="password" placeholder="••••••••" required />
+          </div>
+
+          <div class="extra-row">
+            <label class="checkbox-row">
+              <input type="checkbox" />
+              <span>Запомнить меня</span>
+            </label>
+            <a href="#">Забыли пароль?</a>
+          </div>
+
+          <button type="submit" class="btn-primary">Войти</button>
+        </form>
+
+        <div class="toggle">
+          <span>Нет аккаунта?</span>
+          <button id="show-register" type="button">Создать</button>
+        </div>
+      </div>
+
+      <!-- Форма регистрации -->
+      <div id="register-form" class="card hidden">
+        <div class="card-header">
+          <h2>Регистрация</h2>
+          <p>Создай аккаунт за пару секунд</p>
+        </div>
+
+        <form>
+          <div class="field">
+            <label for="reg-name">Имя пользователя</label>
+            <input id="reg-name" type="text" placeholder="user" required />
+          </div>
+
+          <div class="field">
+            <label for="reg-email">Почта</label>
+            <input id="reg-email" type="email" placeholder="your@email.com" required />
+          </div>
+
+          <div class="field">
+            <label for="reg-password">Пароль</label>
+            <input id="reg-password" type="password" placeholder="Минимум 6 символов" required />
+          </div>
+
+          <div class="field">
+            <label for="reg-password2">Повторите пароль</label>
+            <input id="reg-password2" type="password" placeholder="Еще раз пароль" required />
+          </div>
+
+          <button type="submit" class="btn-primary">Создать аккаунт</button>
+        </form>
+
+        <div class="toggle">
+          <span>Уже зарегистрированы?</span>
+          <button id="show-login" type="button">Войти</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
